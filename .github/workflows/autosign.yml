@@ -38,16 +38,6 @@ jobs:
         echo "XAUTHORITY=/home/runner/.Xauthority" >> $GITHUB_ENV
         touch /home/runner/.Xauthority  # 创建一个空的 Xauthority 文件
         
-    # ---------- 新增：随机延迟 ----------
-    - name: Random delay before execution
-      run: |
-        python -c "
-        import random, time
-        delay = random.randint(0, 3600)
-        print(f'Waiting {delay} seconds (约 {delay%3600//60}m) before running task')
-        time.sleep(delay)
-        "
-        
     - name: Run Python script
       env:
         USER_EMAIL: ${{ secrets.USER_EMAIL }}
